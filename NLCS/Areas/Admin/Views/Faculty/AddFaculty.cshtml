@@ -1,0 +1,40 @@
+﻿@model NLCS.Areas.Admin.ViewModels.FacultyVM
+@{
+    ViewData["Title"] = "AddFaculty";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <!-- Thay đổi kích thước cột -->
+            <form class="border p-4 bd-radius-5px signin-form" asp-action="AddFaculty" enctype="multipart/form-data">
+                <div>
+                    <h2 class="text-center">Thêm khoa mới</h2>
+                </div>
+                <div class="mb-3">
+                    <label for="idfaculty" class="form-label">Mã Khoa</label>
+                    <input type="text" class="form-control bd-radius-5px" id="faculty" asp-for="ID">
+                    <span asp-validation-for="ID" class="text-danger"></span>
+                    <span class="text-danger">@ViewBag.ExistIDFaculty</span>
+                    <div class="form-text">Yêu cầu: KH000, Với 000 là 001 đến 999</div>
+                </div>
+                <div class="mb-3">
+                    <label for="namefaculty" class="form-label">Tên Khoa</label>
+                    <input type="text" class="form-control bd-radius-5px" id="namefaculty" asp-for="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Mô tả</label>
+                    <input type="text" class="form-control bd-radius-5px" id="description" asp-for="Description">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Hình ảnh</label>
+                    <input type="file" class="form-control bd-radius-5px" id="image" asp-for="Image">
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary m-2 justify-content-center" style="margin:auto">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>

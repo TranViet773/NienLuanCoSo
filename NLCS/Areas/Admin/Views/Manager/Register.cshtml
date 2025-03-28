@@ -1,0 +1,276 @@
+﻿@model NLCS.Areas.Admin.ViewModels.RegisterVM
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Login 10_files/css" rel="stylesheet">
+<link rel="stylesheet" href="~/Login 10_files/font-awesome.min.css">
+<link rel="stylesheet" href="~/Login 10_files/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer="" referrerpolicy="origin" src="~/Login 10_files/s.js"></script>
+<style>
+    .form-control {
+        height: auto !important;
+    }
+
+    .input-margin {
+        margin-top: 12px;
+    }
+
+    .custom-input {
+        border-radius: 5px;
+        /* Bo góc 5px */
+        text-align: center;
+        /* Căn giữa nội dung */
+        height: 40px;
+        /* Đảm bảo chiều cao */
+        width: 100%;
+        /* Đảm bảo input chiếm hết chiều rộng của cột */
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+        /* Tạo hiệu ứng chuyển màu viền khi hover */
+        color: black !important;
+    }
+
+        .custom-input:focus {
+            border-color: #007bff;
+            /* Đổi màu viền khi input được focus */
+            outline: none;
+            /* Bỏ đường viền mặc định khi focus */
+            box-shadow: 0px 0px 8px 1px rgba(39, 128, 230, 1);
+        }
+
+        .custom-input:hover {
+            border-color: #0056b3;
+            /* Đổi màu viền khi hover */
+        }
+</style>
+<div class="img js-fullheight" style="background-image: url('/img/bg_login.jpg'); height: 953px;">
+    <section class="ftco-section" style="height: inherit;">
+        <div class="container">
+            <!-- <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Login #10</h2>
+                </div>
+            </div> -->
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0">
+                        <h3 class="mb-4 text-center">Sign up to become an administrator</h3>
+                        <form class="signin-form" id="registerForm">
+
+                            <!-- Fullname -->
+                            <div class="form-group">
+                                <input asp-for="Manager_Name" type="text" class="form-control" placeholder="Full name" required="">
+                                <span asp-validation-for="Manager_Name" class="text-danger"></span>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-8 d-flex align-items-center">
+                                    <!-- Born Date -->
+                                    <div class="form-group mb-0 d-flex align-items-center">
+                                        <input asp-for="Manager_BornDate" type="date" id="bornDate" placeholder="bornDate" class="form-control"
+                                               style="max-width: 150px;" />
+                                        <span asp-validation-for="Manager_BornDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-4 d-flex align-items-center">
+                                    <!-- Gender -->
+                                    <div class="form-group mb-0 d-flex align-items-center">
+                                        <input asp-for="Manager_Sex" type="checkbox" class="custom-checkbox mr-2" id="genderCheckbox">
+                                        <label for="genderCheckbox" class="mb-0">Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="form-group input-margin">
+                                <input asp-for="Manager_Email" type="email" class="form-control" placeholder="Email" required="">
+                                <span asp-validation-for="Manager_Email" class="text-danger"></span>
+                            </div>
+                            <!-- Username -->
+                            <div class="form-group">
+                                <input asp-for="Manager_UserName" type="text" class="form-control" placeholder="Username" required="">
+                                <span asp-validation-for="Manager_UserName" class="text-danger">@ViewBag.ExistedAccount</span>
+                                <h1>@ViewBag.ExistedAccount</h1>
+                            </div>
+                            <!-- password -->
+                            <div class="form-group">
+                                <input asp-for="Manager_Password" id="password-field" type="password" class="form-control" placeholder="Password"
+                                       required="">
+                                <span toggle="#password-field"
+                                      class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                                <span asp-validation-for="Manager_Password" class="text-danger"></span>
+                            </div>
+                            <!-- Phone Number -->
+                            <div class="form-group">
+                                <input asp-for="Manager_PhoneNumber" type="text" class="form-control" placeholder="Phone number" required="">
+                                <span asp-validation-for="Manager_Password" class="text-danger"></span>
+                            </div>
+                            <!-- Information -->
+                            <div class="form-group">
+                                <input asp-for="Manager_Information" type="text" class="form-control" placeholder="Information" required="">
+                                <span asp-validation-for="Manager_Information" class="text-danger"></span>
+                            </div>
+                            <!-- Submit -->
+                            <!-- <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                            </div> -->
+                            <button type="submit" class="btn btn-primary" data-toggle="modal">
+                                Next
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+@* @if (ViewBag.ExistedAccount != null)
+ {
+     <script type="text/javascript">
+         alert('@ViewBag.ExistedAccount');
+     </script>
+ } *@
+<!-- Verify Modal Register -->
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Verify Code</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="verifyCodeForm" asp-action="VerifyCode">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code1">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code2">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code3">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code4">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code5">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code6">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;" data-dismiss="modal">Confirm</button>
+                </form>
+                <div id="verifyCodeMessage" class="text-danger"></div>
+            </div>
+            @*   <div class="modal-footer">
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div> *@
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('.custom-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', function () {
+                // Chỉ cho phép nhập số từ 0 đến 9
+                this.value = this.value.replace(/[^0-9]/g, '');
+
+                // Tự động chuyển đến ô input kế tiếp nếu đã nhập 1 số
+                if (this.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            // Optional: Move focus backward if backspace is pressed and the field is empty
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    });
+</script>
+@section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Xử lý khi gửi form đăng ký
+            $('#registerForm').submit(function (event) {
+                event.preventDefault(); // Ngăn chặn gửi form mặc định
+                const formData = $(this).serialize();
+                console.log(formData); // Log data to see if all fields are included
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Register", "Manager", new { area = "Admin" })',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            // Hiển thị modal nhập mã xác nhận
+                            $('#exampleModal').modal('show');
+                        }
+                        else {
+                            alert("Tài khoản đã tồn tại!");
+                        }
+                    }
+                });
+            });
+
+            // Xử lý khi gửi form xác thực
+            $('#verifyCodeForm').submit(function (event) {
+                event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+                // Thu thập dữ liệu từ các trường nhập mã
+                let verifyCode = {
+                    code1: $('#exampleModal input[name="code1"]').val(),
+                    code2: $('#exampleModal input[name="code2"]').val(),
+                    code3: $('#exampleModal input[name="code3"]').val(),
+                    code4: $('#exampleModal input[name="code4"]').val(),
+                    code5: $('#exampleModal input[name="code5"]').val(),
+                    code6: $('#exampleModal input[name="code6"]').val()
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("VerifyCode", "Manager", new { area = "Admin" })',
+                    data: verifyCode,
+                    success: function (response) {
+                        if (response.success) {
+                            // Chuyển hướng đến trang chính sau khi thành công
+                            window.location.href = '@Url.Action("Index")';
+                        } else {
+                            // Hiển thị thông báo lỗi nếu có
+                            $('#verifyCodeMessage').text(response.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+}
+
+<script src="/_framework/aspnetcore-browser-refresh.js"></script>
+<script src="~/Login 10_files/jquery.min.js"></script>
+<script src="~/Login 10_files/popper.js"></script>
+<script src="~/Login 10_files/bootstrap.min.js"></script>
+<script src="~/Login 10_files/main.js"></script>
+<script defer="" src="~/Login 10_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon="{&quot;rayId&quot;:&quot;8bee8b339d750998&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;}"
+        crossorigin="anonymous"></script>
+
+

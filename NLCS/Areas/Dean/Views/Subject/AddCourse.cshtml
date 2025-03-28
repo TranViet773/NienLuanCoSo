@@ -1,0 +1,142 @@
+﻿@model NLCS.Areas.Dean.ViewModels.CourseVM
+
+@{
+    ViewData["Title"] = "AddCourse";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+}
+
+<style>
+    .set-color {
+        color: #06BBCC !important;
+    }
+
+    .btn-custom {
+        color: #fff;
+        background-color: #06BBCC;
+    }
+
+        .btn-custom:hover {
+            color: #06BBCC;
+            background-color: #fff;
+            border: 1px solid #06BBCC;
+        }
+</style>
+
+<hr />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <form class="border p-4 rounded shadow-sm" asp-action="AddCourse" enctype="multipart/form-data">
+                <div class="text-center mb-4">
+                    <h2 class="set-color">Thêm Môn Học</h2>
+                </div>
+
+                <!-- Mã Môn Học -->
+                <div class="mb-3">
+                    <label for="Subject_Id" class="form-label set-color">Mã Môn Học</label>
+                    <input type="text" class="form-control rounded-3" id="Subject_Id" asp-for="Subject_Id" />
+                    <span asp-validation-for="Subject_Id" class="text-danger"></span>
+                </div>
+
+                <!-- Tên Môn Học -->
+                <div class="mb-3">
+                    <label for="Subject_Name" class="form-label set-color">Tên Môn Học</label>
+                    <input type="text" class="form-control rounded-3" id="Subject_Name" asp-for="Subject_Name" />
+                    <span asp-validation-for="Subject_Name" class="text-danger"></span>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <!-- Thời Gian Học -->
+                        <label for="Subject_Time" class="form-label set-color">Thời Gian Học</label>
+                        <input type="text" class="form-control rounded-3" id="Subject_Time" asp-for="Subject_Time" />
+                        <span asp-validation-for="Subject_Time" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Số Lượng Học Viên -->
+                        <label for="Subject_Quantity" class="form-label set-color">Số Lượng Học Viên</label>
+                        <input type="number" class="form-control rounded-3" id="Subject_Quantity" asp-for="Subject_Quantity" />
+                        <span asp-validation-for="Subject_Quantity" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <!-- Đối Tượng -->
+                        <label for="Subject_DoiTuong" class="form-label set-color">Đối Tượng</label>
+                        <select asp-for="Subject_DoiTuong" class="form-control rounded-3" asp-items="Model.DanhSachDoiTuong"></select>
+                        <span asp-validation-for="Subject_DoiTuong" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Địa Điểm -->
+                        <label for="Subject_Place" class="form-label set-color">Địa Điểm</label>
+                        <input type="text" class="form-control rounded-3" id="Subject_Place" asp-for="Subject_Place" />
+                        <span asp-validation-for="Subject_Place" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <!-- Năm Học -->
+                        <label for="Year" class="form-label set-color">Năm Học</label>
+                        <select asp-for="Year" class="form-control rounded-3" asp-items="Model.Years"></select>
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Học Kỳ -->
+                        <label for="Semester" class="form-label set-color">Học Kỳ</label>
+                        <select asp-for="Semester" class="form-control rounded-3" asp-items="Model.Semesters"></select>
+                        <span asp-validation-for="Semester" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <!-- Giáo Viên -->
+                    <label for="SelectedTeacherIds" class="form-label set-color">Giáo Viên</label>
+                    <select asp-for="SelectedTeacherIds" class="form-control rounded-3" asp-items="Model.Teachers"></select>
+                    <span asp-validation-for="SelectedTeacherIds" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <!-- Chương Trình Đào Tạo -->
+                    <label for="SelectedTrainingProgramIds" class="form-label set-color">Chương Trình Đào Tạo</label>
+                    <select asp-for="SelectedTrainingProgramIds" class="form-control rounded-3" asp-items="Model.TrainingPrograms"></select>
+                    <span asp-validation-for="SelectedTrainingProgramIds" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <!-- Mô Tả Chung -->
+                    <label for="Subject_Description" class="form-label set-color">Mô Tả Chung</label>
+                    <input type="text" class="form-control rounded-3" id="Subject_Description" asp-for="Subject_Description" />
+                    <span asp-validation-for="Subject_Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <!-- Nội Dung -->
+                    <label for="Subject_Content" class="form-label set-color">Mô Tả Nội Dung</label>
+                    <input type="text" class="form-control rounded-3" id="Subject_Content" asp-for="Subject_Content" />
+                    <span asp-validation-for="Subject_Content" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <!-- Hình Ảnh -->
+                    <label for="Subject_Image" class="form-label set-color">Hình Ảnh</label>
+                    <input asp-for="Subject_Image" class="form-control rounded-3" type="file" />
+                    <span asp-validation-for="Subject_Image" class="text-danger"></span>
+                </div>
+
+                <!-- Thông báo lỗi -->
+                <h5 class="text-danger">@ViewBag.CourseInvalid</h5>
+                <h5 class="text-danger">@ViewBag.CourseWasExisted</h5>
+                <h5 class="text-danger">@ViewBag.ImageisNull</h5>
+
+                <!-- Nút tạo -->
+                <button type="submit" class="btn btn-custom m-2 w-100">Tạo</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Quay lại danh sách</a>
+</div>

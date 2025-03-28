@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        border: 8px solid #333;
+        padding: 25px;
+        max-width: 700px;
+        margin: auto;
+        background-color: #f8f9fa;
+    }
+
+    .header, .footer {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .content {
+        margin-top: 40px;
+        font-size: 18px;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .student-name {
+        font-size: 28px;
+        font-weight: bold;
+        color: #4a89dc;
+    }
+
+    .certificate-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .signature {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .logo {
+        width: 100px;
+        height: auto;
+    }
+
+    .course-name {
+        font-size: 30px;
+        font-weight: bold;
+        color: darkred;
+    }
+
+    .nguoicapbang {
+        font-size: 20px;
+        font-weight: bold;
+        color: cadetblue;
+    }
+</style>
+<body>
+    <div class="text-center">
+        <h2 class="header mb-3">Trung Tâm Đào Tạo Elearning</h2>
+        <h1 class="certificate-title">Giấy Chứng Nhận</h1>
+    </div>
+    <div class="content">
+        <p>Xác nhận rằng</p>
+        <div class="student-name">{{StudentName}}</div>
+        <p>đã hoàn thành khóa học</p>
+        <div class="course-name font-weight-bold">{{CourseName}}</div>
+        <p>Ngày đăng ký: <span class="completion-date">{{RegistationDate}}</span>.</p>
+        <p>Ngày cấp bằng: <span class="completion-date">{{CompletionDate}}</span>.</p>
+    </div>
+    <div class="signature mt-5">
+        <p>Người cấp bằng</p>
+        <p>Trưởng khoa</p>
+        <p class="nguoicapbang">{{NguoiCapBang}}</p>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<NLCS.Models.Entities.Subject>
+
+@{
+    ViewData["Title"] = "getAllCourses";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+}
+
+<h1>Danh sách khóa học</h1>
+@* thêm chức form tìm kiếm ở đây *@
+<form asp-action="Search" method="post" class="mb-3">
+    <div class="input-group">
+        <select name="id_TP" class="form-select">
+            <option value="">Chọn chương trình đào tạo</option>
+            @foreach (var trainingProgram in ViewBag.TrainingProgram as List<SelectListItem>)
+            {
+                <option value="@trainingProgram.Value">@trainingProgram.Text</option>
+            }
+        </select>
+        <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+    </div>
+</form>
+<p>
+    <a asp-action="AddCourse">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã
+            </th>
+            <th>
+                Tên khóa học
+            </th>
+            <th>
+                Thời gian đào tạo
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Địa điểm
+            </th>
+            <th>
+                Đối tượng đào tạo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject_Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject_Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject_Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject_DoiTuong)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditCourse", new { id = item.Subject_Id }) |
+                    @Html.ActionLink("Details", "DetailCourse", new { id = item.Subject_Id}) |
+                    @Html.ActionLink("Delete", "DeleteCourse", new { id = item.Subject_Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,112 @@
+﻿@model IEnumerable<NLCS.Models.Entities.Teacher>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .avt-teacher {
+        height: 100px;
+        width: fit-content;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 11%;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Màu xám đen với độ trong suốt */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white; /* Màu sắc cho icon */
+        font-size: 24px; /* Kích thước icon */
+        opacity: 0; /* Ẩn lớp phủ ban đầu */
+        transition: opacity 0.3s; /* Hiệu ứng chuyển tiếp */
+    }
+
+        .overlay.active {
+            opacity: 0.8; /* Hiện lớp phủ khi block */
+        }
+
+
+    .table td, .table th {
+        vertical-align: middle; /* Căn giữa theo chiều dọc */
+    }
+
+    .search {
+        height: 37px;
+        border: 1px solid #009CFF;
+        border-radius: 5px;
+    }
+</style>
+
+<div style="display: flex;">
+    <button type="button" class="btn btn-outline-primary m-2">
+        <a href="@Url.Action("AddTeacher")" class="text-decoration-none">Thêm mới</a>
+    </button>
+    <form action="@Url.Action("SearchByNameOrId","Teacher")" method="post" style="padding: 8px;">
+        <input class="search" type="text" placeholder="Tìm kiếm" name="search"/>
+        <button class="btn btn-primary" type="submit">Tìm</button>
+    </form>
+</div>
+<form asp-action="Search" asp-controller="Teacher" method="post" class="mb-3">
+    <div class="input-group">
+        <select name="id_Faculty" class="form-select">
+            <option value="">@(ViewBag.FacultyIsSelected != null ? ViewBag.FacultyIsSelected : "tất cả")</option>
+            @foreach (var faculty in ViewBag.Faculties as List<SelectListItem>)
+            {
+                <option value="@faculty.Value">@faculty.Text</option>
+            }
+        </select>
+        <button class="btn btn-primary" type="submit">Lọc</button>
+    </div>
+</form>
+<div class="bg-light rounded h-100 p-4">
+    <h6 class="mb-4">Danh Sách Giảng Viên:</h6>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Mã cán bộ</th>
+                    <th scope="col">Họ và tên</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Khoa</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(!Model.Any())
+                {
+                    <h2>@ViewBag.DoNotFound</h2>
+                }
+                else
+                {
+                    var i = 0;
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td style="position: relative;">
+                                <img src="@Url.Content(item.Teacher_Image)" alt="Ảnh giảng viên" class="avt-teacher" />
+                                <div class="overlay @(item.isActive ? "active" : "")">
+                                    <i class="fas fa-lock"></i> <!-- Bạn cần thêm Font Awesome hoặc icon tương tự -->
+                                </div>
+                            </td>
+                            <td>@item.Teacher_Id</td>
+                            <td>@item.Teacher_Degree. @item.Teacher_Name</td>
+                            <td>@item.Teacher_Email</td>
+                            <td>@item.Facultys.Faculty_Name</td>
+                            <td>
+                                <a href="@Url.Action("DetailTeacher","Teacher",new {id = item.Teacher_Id})" class="btn btn-outline-primary">Detail</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

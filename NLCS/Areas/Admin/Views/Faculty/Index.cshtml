@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NLCS.Models.Entities.Faculty>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<button type="button" class="btn btn-outline-primary m-2">
+    <a href="@Url.Action("AddFaculty")" class="text-decoration-none">Thêm mới</a>
+</button>
+<div class="bg-light rounded">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Mã Khoa</th>
+                <th scope="col">Tên Khoa</th>
+                <th scope="col">Số CTDT</th>
+                <th scope="col">Số Giảng Viên</th>
+                <th scope="col">Cập nhật</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{var i=0;}
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <th scope="row">@i</th>
+                    <td>@item.Faculty_Id</td>
+                    <td>@item.Faculty_Name</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>
+                        <a href="@Url.Action("DetailFaculty", "Faculty", new { id = item.Faculty_Id })" class="btn btn-square btn-outline-success m-2">
+                            <i class="fa-solid fa-list-ul"></i>
+                        </a>
+                        <a href="@Url.Action("EditFaculty", new{id = item.Faculty_Id})" class="btn btn-square btn-outline-warning m-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("DeleteFaculty", new{id = item.Faculty_Id})" class="btn btn-square btn-outline-warning m-2"><i class="fa-solid fa-trash"></i></a>
+@*                         <button type="button" class="btn btn-square btn-outline-warning m-2"><i class="fa-solid fa-pen-to-square"></i></button>
+ *@                        @* <button type="button" class="btn btn-square btn-outline-danger m-2"><i class="fa-solid fa-trash"></i></button> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

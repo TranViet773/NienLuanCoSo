@@ -1,0 +1,78 @@
+﻿@model IEnumerable<NLCS.Models.Entities.TrainingProgram>
+
+@{
+    ViewData["Title"] = "getAllTP";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+}
+
+<style>
+    .set-color{
+        color: #06BBCC;
+    }
+    th{
+        color: #06BBCC;
+    }
+</style>
+
+<p>
+    @* <button type="button" class="btn btn-outline-primary m-2">Primary</button> *@
+    <a class="btn btn-outline-primary m-2"  asp-action="AddTP">Thêm mới</a>
+</p>
+<h3 class="text-center set-color">Danh sách các Chương trình đào tạo </h3>
+<table class="table ">
+    <thead>
+        <tr>
+            <th>
+               Mã
+            </th>
+            <th>
+                Tên
+            <th>
+               Thời Gian Đào Tạo
+            </th>
+            <th>
+                Đối tượng
+            </th>
+            <th>
+                Phụ trách
+            </th>
+            <th>
+                Danh hiệu
+            </th>
+            <th>
+                Mã Khoa
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+            <tr onclick="window.location='@Url.Action("DetailTrainingProgram", new { id = item.TP_Id })';" style="cursor: pointer;">
+                <td>
+                        @Html.DisplayFor(modelItem => item.TP_Id)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.TP_Name)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.TP_Student)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.TP_Leader)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.TP_Target)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.TP_FacultyId)
+                </td>
+                <td>
+                       
+                    <a href="@Url.Action("EditTrainingProgram", new{id = item.TP_Id})" class="btn btn-square btn-outline-warning m-2"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="@Url.Action("DeleteTrainingProgram", new{id = item.TP_Id})" class="btn btn-square btn-outline-danger m-2"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>

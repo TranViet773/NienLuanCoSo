@@ -1,0 +1,6 @@
+﻿@model IEnumerable<NLCS.Models.Entities.Faculty>  
+
+    @foreach(var item in Model)
+    {
+        <a href="@Url.Action("getFaculty","Home",new {id = item.Faculty_Id})" class="dropdown-item">@item.Faculty_Name</a>
+    }

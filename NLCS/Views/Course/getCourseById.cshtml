@@ -1,0 +1,100 @@
+﻿@model NLCS.ViewModels.SubjectTrainingProgramVM
+@{
+    ViewData["Title"] = "GetCourseByTrainingProgram";
+    Layout = "~/Views/Shared/_layoutCommon.cshtml";
+}
+
+<!-- Content Start -->
+@* <div class="container-fluid" style="padding-left: 10%; padding-right: 10%;"> *@
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-center text-primary px-3 mt-5">Chương trình đào tạo</h6>
+    <h1 class="">@ViewBag.TrainingProgram</h1>
+    </div>
+    <!-- About Start -->
+    <div class="container-fluid about py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5">
+                    <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
+                        <img src="@Url.Content(Model.Subject_Image)" class="img-fluid w-100 h-100" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/about-img-1.png);">
+                    <h5 class="section-about-title pe-3">Khóa học</h5>
+                <h1 class="mb-4"><span class="text-primary">@Model.Subject_Name</span></h1>
+                    <p class="mb-4">@Model.Subject_Description</p>
+                    <p class="mb-4">@Model.Subject_Content</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i><span class="fw-bold">Mã:</span> @Model.Subject_Id</p>
+                        </div>
+                        <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i><span class="fw-bold">Thời gian đào tạo:</span> @Model.Subject_Time ngày</p>
+                        </div>
+                        <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i><span class="fw-bold">Đối tượng:</span> @Model.Subject_DoiTuong</p>
+                        </div>
+                        <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i><span class="fw-bold">Số lượng:</span> @Model.Subject_Quantity</p>
+                        </div>
+                        <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i><span class="fw-bold">Địa điểm:</span> @Model.Subject_Place</p>
+                        </div>
+                    </div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button type="button" class="btn btn-primary rounded-pill py-3 px-5 mt-2s" data-bs-toggle="modal" data-bs-target="#exampleModal" >Đăng ký ngay</button>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="@Url.Action("LogInUser","Account")">Đăng ký ngay!</a>
+                        }
+                        
+                </div>
+                    @if (TempData["FullSlot"] != null)
+                    {
+                        <div class="alert alert-warning">@TempData["FullSlot"]</div>
+                    }
+
+                    @if (TempData["Registed"] != null)
+                    {
+                        <div class="alert alert-warning">@TempData["Registed"]</div>
+                    }
+            </div>
+        </div>
+    </div>
+    <!--Modal Register Course-->
+    <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Thông tin đăng kýs</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-action="DangKy" asp-controller="DangKyCourse"> 
+                    <div class="row">
+                        <input type="hidden" name="id_course" value="@Model.Subject_Id"/>
+                        <div class="col">
+                            <select class="form-control custom-input" name="year">
+                                <option value="20232024">2023-2024</option>
+                                <option value="20242025">2024-2025</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-control custom-input" name="semester">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Confirm</button>
+                </form>
+                <div id="verifyCodeMessage" class="text-danger"></div>
+            </div>
+        </div>
+    </div>
+</div>

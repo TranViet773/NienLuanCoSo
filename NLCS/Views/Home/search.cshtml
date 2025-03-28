@@ -1,0 +1,71 @@
+﻿@model IEnumerable<NLCS.Models.Entities.Subject>
+
+@{
+    ViewData["Title"] = "GetCourseByTrainingProgram";
+    Layout = "~/Views/Shared/_layoutCommon.cshtml";
+}
+<style>
+    .subject-item {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover; /* Đảm bảo hình ảnh phủ đầy */
+        height: 250px; /* Chiều cao cố định cho các thẻ */
+        width: 100%; /* Chiều rộng tự động điều chỉnh theo container */
+        border-radius: 10px;
+        overflow: hidden; /* Đảm bảo phần hình ảnh vượt quá bị ẩn */
+    }
+
+    .service-item {
+        min-height: 300px; /* Đảm bảo chiều cao tối thiểu của thẻ chứa thông tin */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.1); /* Tạo viền nhẹ */
+        border-radius: 10px;
+        transition: transform 0.2s;
+    }
+
+        .service-item:hover {
+            transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
+        }
+</style>
+
+<div class="text-center wow fadeInUp" data-wow-delay="0.1s" style="color: #06bbcc; margin-top: 2%;">
+    <h1 class="mb-5">Danh Sách Môn Học</h1>
+</div>
+
+<div>
+    <hr />
+    @if (Model != null && Model.Any())
+    {
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-4">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-3 col-sm-6 wow fadeInUp " data-wow-delay="0.3s">
+                            <a href="@Url.Action("getCourseById","Course", new { id = item.Subject_Id, nametp = ViewBag.TrainingProgram})">
+                                <div class="service-item text-center pt-3 subject-item"
+                                     style="background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(@Url.Content(item.Subject_Image));">
+                                    <div class="p-4">
+                                        <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                                        <h5 class="mb-3" style="color: #fff;">@item.Subject_Name</h5>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p class="text-center" style="color: #06bbcc;">Không có môn học nào được tìm thấy.</p>
+    }
+</div>
+
+

@@ -1,0 +1,148 @@
+﻿@model NLCS.Models.Entities.Faculty
+
+@{
+    ViewData["Title"] = "DetailFaculty";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .section-title {
+        position: relative;
+        display: inline-block;
+        text-transform: uppercase;
+        color: unset;
+    }
+    .imgcover_faculty{
+        object-fit: cover;
+        height: 400px;
+        width: 100%;
+    }
+    .avt-teacher{
+        height: 100px;
+        width: fit-content;
+    }
+
+    .table td, .table th {
+        vertical-align: middle; /* Căn giữa theo chiều dọc */
+    }
+</style>
+<div>
+    <div class="text-center">
+        <h1 class="mb-5 section-title title-head">@Model.Faculty_Name</h1>
+    </div>
+    <img src="@Url.Content(Model.Faculty_Image)" class="imgcover_faculty" alt="Faculty Image" />
+    <hr />
+    <dl class="row">
+        @* <img src="@Url.Content(@Model.Faculty_Image)" alt="Alternate Text" /> *@
+        <dt class = "col-sm-2">
+            Mã Khoa:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Faculty_Id)
+        </dd>
+        <dt class = "col-sm-2">
+            Tên Khoa:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Faculty_Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Giới Thiệu Chung:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Faculty_Description)
+        </dd>
+        <dt class="col-sm-2">
+            Số Chương trình đào tạo:
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var count = 0;
+            }
+            @foreach (var item in Model.TrainingPrograms)
+            {
+                count++;
+            }
+            @count
+        </dd>
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Danh Sách Giảng Viên:</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Hình ảnh</th>
+                                <th scope="col">Mã cán bộ</th>
+                                <th scope="col">Họ và tên</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Khoa</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            var adminItem = Model.Teachers.FirstOrDefault(t => t.IsAdmin);
+                            var otherItems = Model.Teachers.Where(t => !t.IsAdmin).ToList();
+                            int i = 0; // Khởi tạo biến đếm
+                        }
+
+                        @if (adminItem != null)
+                        {
+                            // Hiển thị item có IsAdmin ở hàng đầu tiên
+                            <tr>
+                                <th scope="row">@{++i;}</th>
+                                <td>
+                                                            <img src="@Url.Content(adminItem.Teacher_Image)" alt="Ảnh giảng viên" class="avt-teacher" style="border: 2px solid #009CFF;" />
+                                </td>
+                                <td>@adminItem.Teacher_Id</td>
+                                <td>@adminItem.Teacher_Degree. @adminItem.Teacher_Name</td>
+                                <td>@adminItem.Teacher_Email</td>
+                                <td>@adminItem.Facultys.Faculty_Name</td>
+                                <td>
+                                    <a href="@Url.Action("DetailTeacher", "Teacher", new { id = adminItem.Teacher_Id })" class="btn btn-outline-primary">Detail</a>
+                                </td>
+                            </tr>
+                        }
+
+
+                        @foreach (var item in otherItems)
+                        {
+                            <tr>
+                                <th scope="row">@{++i;}</th>
+                                <td>
+                                    <img src="@Url.Content(item.Teacher_Image)" alt="Ảnh giảng viên" class="avt-teacher" />
+                                </td>
+                                <td>@item.Teacher_Id</td>
+                                <td>@item.Teacher_Degree. @item.Teacher_Name</td>
+                                <td>@item.Teacher_Email</td>
+                                <td>@item.Facultys.Faculty_Name</td>
+                                <td>
+                                    <a href="@Url.Action("DetailTeacher", "Teacher", new { id = item.Teacher_Id })" class="btn btn-outline-primary">Detail</a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <dt class="col-sm-2">
+            Tổng số giảng viên:
+        </dt> 
+        <dd class="col-sm-10">
+            @{
+                var gv = 0;
+            }
+            @foreach (var item in Model.Teachers)
+            {
+                gv++;
+            }
+            @gv
+           
+        </dd> 
+         <div>
+            <a asp-action="Index"><i class="fa-regular fa-chevron-left"></i></a>
+            <a href="@Url.Action("EditFaculty", new{id = Model.Faculty_Id})"><i class="fa-regular fa-pen-to-square"></i></a>
+        </div>
+    </dl>
+</div>
+

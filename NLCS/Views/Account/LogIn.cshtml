@@ -1,0 +1,188 @@
+﻿@model NLCS.ViewModels.LogInUserVM
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/_layoutCommon.cshtml";
+}
+<link href="~/Login 10_files/css" rel="stylesheet">
+<link rel="stylesheet" href="~/Login 10_files/font-awesome.min.css">
+<link rel="stylesheet" href="~/Login 10_files/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer="" referrerpolicy="origin" src="~/Login 10_files/s.js"></script>
+<style>
+    .bd-radius-5px {
+        border-radius: 5px !important;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <!-- Thay đổi kích thước cột -->
+            <form class="border p-4 bd-radius-5px signin-form" id="registerForm">
+                <div class="mb-3">
+                    <label for="studentEmail" class="form-label">Email assaddress</label>
+                    <input type="email" class="form-control bd-radius-5px" id="studentEmail" asp-for="Email">
+                    <div class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="studentPhoneNumber" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control bd-radius-5px" id="studentPhoneNumber" asp-for="UserName">
+                </div>
+                <div class="mb-3">
+                    <label for="studentAddress" class="form-label">Address</label>
+                    <input type="password" class="form-control bd-radius-5px" id="studentAddress" asp-for="Password">
+                </div>
+                <button type="submit" class="btn btn-primary" data-toggle="modal">
+                    Next
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@* @if (ViewBag.ExistedAccount != null)
+ {
+     <script type="text/javascript">
+         alert('@ViewBag.ExistedAccount');
+     </script>
+ } *@
+<!-- Verify Modal Register -->
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Verify Code</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="verifyCodeForm" asp-action="VerifyCode">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code1">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code2">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code3">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code4">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code5">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code6">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;" data-dismiss="modal">Confirm</button>
+                </form>
+                <div id="verifyCodeMessage" class="text-danger"></div>
+            </div>
+            @*   <div class="modal-footer">
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div> *@
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('.custom-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', function () {
+                // Chỉ cho phép nhập số từ 0 đến 9
+                this.value = this.value.replace(/[^0-9]/g, '');
+
+                // Tự động chuyển đến ô input kế tiếp nếu đã nhập 1 số
+                if (this.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            // Optional: Move focus backward if backspace is pressed and the field is empty
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    });
+</script>
+@section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Xử lý khi gửi form đăng ký
+            $('#registerForm').submit(function (event) {
+                event.preventDefault(); // Ngăn chặn gửi form mặc định
+                const formData = $(this).serialize();
+                console.log(formData); // Log data to see if all fields are included
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("LogInUser")',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            // Hiển thị modal nhập mã xác nhận
+                            $('#exampleModal').modal('show');
+                        }
+                        else {
+                            alert("Tài khoản đã tồn tại!");
+                        }
+                    }
+                });
+            });
+
+            // Xử lý khi gửi form xác thực
+            $('#verifyCodeForm').submit(function (event) {
+                event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+                // Thu thập dữ liệu từ các trường nhập mã
+                let verifyCode = {
+                    code1: $('#exampleModal input[name="code1"]').val(),
+                    code2: $('#exampleModal input[name="code2"]').val(),
+                    code3: $('#exampleModal input[name="code3"]').val(),
+                    code4: $('#exampleModal input[name="code4"]').val(),
+                    code5: $('#exampleModal input[name="code5"]').val(),
+                    code6: $('#exampleModal input[name="code6"]').val()
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("VerifyCode", "Manager", new { area = "Admin" })',
+                    data: verifyCode,
+                    success: function (response) {
+                        if (response.success) {
+                            // Chuyển hướng đến trang chính sau khi thành công
+                            window.location.href = '@Url.Action("Index")';
+                        } else {
+                            // Hiển thị thông báo lỗi nếu có
+                            $('#verifyCodeMessage').text(response.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+}
+
+<script src="/_framework/aspnetcore-browser-refresh.js"></script>
+<script src="~/Login 10_files/jquery.min.js"></script>
+<script src="~/Login 10_files/popper.js"></script>
+<script src="~/Login 10_files/bootstrap.min.js"></script>
+<script src="~/Login 10_files/main.js"></script>
+<script defer="" src="~/Login 10_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon="{&quot;rayId&quot;:&quot;8bee8b339d750998&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;}"
+        crossorigin="anonymous"></script>
+

@@ -1,0 +1,241 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    .bg-gradient-danger {
+        background: linear-gradient(to right, #FE7496, #FFBB96);
+    }
+
+    .bg-gradient-success {
+        background: linear-gradient(to right, #09CDAF, #81D9D1);
+    }
+
+    .bg-gradient-primary {
+        background: linear-gradient(to right, #9C56FF, #D688FF);
+    }
+
+    .profile-icon {
+        color: lightgrey;
+    }
+
+    canvas {
+        width: 80% !important; 
+        height: 80% !important;
+    }
+    .charts-container {
+        display: flex; 
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .chart-wrapper {
+        width: 48%; 
+    }
+</style>
+
+<div class="row text-center">
+    <div class="col-sm-4 grid-margin">
+        <div class="card bg-gradient-danger text-white">
+            <div class="card-body">
+                <div class="profile-icon fs-3">
+                    <i class="fa-solid fa-school-circle-check"></i>
+                </div>
+                <h2 class="mb-0 mt-3" id="facultyCounter">0</h2>
+                <h5 class="font-weight-normal mb-3">Faculties</h5>
+                <p class="text-medium m-0">Decreased by 10%</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 grid-margin">
+        <div class="card bg-gradient-success text-white">
+            <div class="card-body">
+                <div class="profile-icon fs-3">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <h2 class="mb-0 mt-3" id="teacherCounter">0</h2>
+                <h5 class="font-weight-normal mb-3">Teachers</h5>
+                <p class="text-medium m-0">Decreased by 10%</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 grid-margin">
+        <div class="card bg-gradient-primary text-white">
+            <div class="card-body">
+                <div class="profile-icon fs-3">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <h2 class="mb-0 mt-3" id="studentCounter">0</h2>
+                <h5 class="font-weight-normal mb-3">Students</h5>
+                <p class="text-medium m-0">Increased by 5%</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="charts-container">
+    <div class="chart-wrapper">
+        <canvas id="pieChart" width="400" height="200"></canvas>
+    </div>
+    <div class="chart-wrapper">
+        <canvas id="barChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Tạo hàm tăng số đếm
+        function startCountUp(elementId, target) {
+            let count = 0;
+            const counterElement = document.getElementById(elementId);
+            const interval = setInterval(() => {
+                count += Math.ceil(target / 100);
+                counterElement.innerText = Math.min(count, target);
+                if (count >= target) clearInterval(interval);
+            }, 50);
+        }
+
+        // Chạy các hàm đếm số liệu khi trang được tải xong
+        startCountUp('facultyCounter', @ViewBag.NumOfFaculties);
+        startCountUp('teacherCounter', @ViewBag.NumOfTeachers);
+        startCountUp('studentCounter', @ViewBag.NumOfStudents);
+
+        // Chuyển đổi dữ liệu từ ViewBag sang dạng JSON để sử dụng trong biểu đồ
+        const faculties = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.FacultyData));
+        const subjects = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.FacultySubjectData));
+        console.log("Faculty Subject Data:", subjects);
+        // Dữ liệu biểu đồ tròn (Pie Chart) về giảng viên theo khoa
+        var facultyLabels = faculties.map(f => f.Faculty_Name);
+        var facultyData = faculties.map(f => f.LecturerCount);
+
+        // Vẽ biểu đồ tròn (Pie Chart)
+        var ctxPie = document.getElementById('pieChart').getContext('2d');
+        var myPieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: facultyLabels,
+                datasets: [{
+                    data: facultyData,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        align: 'center',
+                        labels: { font: { size: 18 }, padding: 20 }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tỷ lệ giảng viên theo khoa',
+                        font: { size: 20 }
+                    }
+                }
+            }
+        });
+
+        // Dữ liệu biểu đồ cột (Bar Chart) về số lượng sinh viên đăng ký môn học theo khoa
+        var subjectLabels = subjects.map(s => s.Faculty_Name);
+        var subjectData = subjects.map(s => s.StudentCount);
+
+        // Vẽ biểu đồ cột (Bar Chart)
+        var ctxBar = document.getElementById('barChart').getContext('2d');
+        var myBarChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: subjectLabels,
+                datasets: [{
+                    label: 'Số lượng đăng ký môn học',
+                    data: subjectData,
+                    backgroundColor: '#36A2EB',
+                    borderColor: '#1E88E5',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Số lượng đăng ký môn học theo khoa',
+                        font: { size: 20 }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, ticks: { stepSize: 10, font: { size: 16 } } },
+                    x: { ticks: { font: { size: 16 } } }
+                }
+            }
+        });
+    });
+</script>
+
+
+
+
+
+ @* <script>
+     function startCountUp(elementId, target) {
+         let count = 0;
+         const counterElement = document.getElementById(elementId);
+
+         const interval = setInterval(() => {
+             count += Math.ceil(target / 100); // Tăng theo tỷ lệ phần trăm
+             counterElement.innerText = Math.min(count, target); // Đảm bảo không vượt quá target
+
+             if (count >= target) {
+                 clearInterval(interval);
+             }
+         }, 50); // Thay đổi giá trị này để điều chỉnh tốc độ
+     }
+
+     document.addEventListener('DOMContentLoaded', () => {
+         startCountUp('facultyCounter', @ViewBag.NumOfFaculties);
+         startCountUp('teacherCounter', @ViewBag.NumOfTeachers);
+         startCountUp('studentCounter', @ViewBag.NumOfStudents);
+     });
+
+     var ctx = document.getElementById('pieChart').getContext('2d');
+     var faculties = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.FacultyData));
+
+     var labels = faculties.map(f => f.Faculty_Name);
+     var data = faculties.map(f => f.LecturerCount);
+
+     var myPieChart = new Chart(ctx, {
+         type: 'pie',
+         data: {
+             labels: labels,
+             datasets: [{
+                 data: data,
+                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+             }]
+         },
+         options: {
+             responsive: true,
+             plugins: {
+                 legend: {
+                     position: 'top', // Thay đổi vị trí nếu cần
+                     align: 'center', // Thay đổi alignment nếu cần
+                     labels: {
+                         font: {
+                             size: 24,
+                         },
+                         padding: 50,
+                     }
+                 },
+                 title: {
+                     display: true,
+                     text: 'Tỷ lệ giảng viên theo khoa',
+                     font: {
+                         size: 18 // Thay đổi kích thước chữ cho tiêu đề
+                     }
+                 }
+             }
+         }
+     });
+ </script> *@

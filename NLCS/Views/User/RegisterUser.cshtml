@@ -1,0 +1,72 @@
+﻿@model NLCS.ViewModels.RegisterUserVM
+
+@{
+    ViewData["Title"] = "RegisterUser";
+    Layout = "~/Views/Shared/_layoutCommon.cshtml";
+}
+<style>
+    .bd-radius-5px{
+        border-radius: 5px !important;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <!-- Thay đổi kích thước cột -->
+            <form class="border p-4 bd-radius-5px mt-4" asp-action="RegisterUser">
+                <div>
+                    <h2 class="text-center">Đăng ký</h2>
+                </div>
+                <div class="mb-3">
+                    <label for="studentName" class="form-label">Tên</label>
+                    <input type="text" class="form-control bd-radius-5px" id="studentName" asp-for="Student_Name">
+                    <span asp-validation-for="Student_Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="studentDoB" class="form-label">Ngày sinh</label>
+                        <input type="date" class="form-control bd-radius-5px" id="studentDoB" asp-for="Student_DoB">
+                        <span asp-validation-for="Student_DoB" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <div class="form-check" style="margin-top: 2.3rem;">
+                            <input type="checkbox" class="form-check-input" id="checkMeOut1" asp-for="Student_Gender">
+                            <label class="form-check-label" for="checkMeOut1">Nam</label>
+                            <span asp-validation-for="Student_Gender" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="studentEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control bd-radius-5px" id="studentEmail" asp-for="Student_Email">
+                    <span asp-validation-for="Student_Email" class="text-danger"></span>
+                    <div class="form-text">Ex: abc123@gmail.com</div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="studentUsername" class="form-label">Tên tài khoản</label>
+                        <input type="text" class="form-control bd-radius-5px" id="studentUsername" asp-for="Student_Username">
+                        <span asp-validation-for="Student_Username" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label for="studentPassword" class="form-label">Mật khẩu</label>
+                        <input type="password" class="form-control bd-radius-5px" id="studentPassword" asp-for="Student_Password">
+                        <span asp-validation-for="Student_Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="studentPhoneNumber" class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control bd-radius-5px" id="studentPhoneNumber" asp-for="Student_PhoneNumber">
+                    <span asp-validation-for="Student_PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="studentAddress" class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control bd-radius-5px" id="studentAddress" asp-for="Student_Address">
+                    <span asp-validation-for="Student_Address" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+</div>
+

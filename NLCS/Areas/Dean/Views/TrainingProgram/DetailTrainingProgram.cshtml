@@ -1,0 +1,123 @@
+﻿@model NLCS.Models.Entities.TrainingProgram
+
+@{
+    ViewData["Title"] = "DetailTrainingProgram";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+}
+
+<style>
+    body {
+        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+
+    }
+
+    .emp-profile {
+        padding: 3%;
+        /* margin-top: 3%; */
+        margin-bottom: 3%;
+        border-radius: 0.5rem;
+        background: #fff;
+    }
+    label, h1{
+        color: #06BBCC;
+        font-weight: 700;
+    }
+</style>
+<div class="container emp-profile">
+
+    <h1>Chi tiết Chương trình đào tạo</h1>
+
+<div class="row" style="margin-left: 1.9em; padding-top: 30px;">
+    <div class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Mã CTDT</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_Id</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Tên CTDT</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_Name</p>
+                    </div>
+                </div>
+                 @* <div class="row">
+                     <div class="col-md-6">
+                         <label>Thời gian đào tạo</label>
+                     </div>
+                     <div class="col-md-6">
+                         <p>@Model.TP_TrainingTime</p>
+                     </div>
+                 </div> *@
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Đối tượng đào tạo</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_Student</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Phụ trách</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_Leader</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Tiêu đề</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_Title</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Hình thức đào tạo</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_TrainingForm</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Mục tiêu đào tạo</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_Target</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Khoa</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Model.TP_FacultyId</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Mô tả</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@Html.DisplayFor(model => model.TP_Desciption)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

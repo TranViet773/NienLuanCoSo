@@ -1,0 +1,75 @@
+﻿@model NLCS.Areas.Admin.ViewModels.LogInVM
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="~/Login 10_files/css" rel="stylesheet">
+
+<link rel="stylesheet" href="~/Login 10_files/font-awesome.min.css">
+<link rel="stylesheet" href="~/Login 10_files/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+      rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer="" referrerpolicy="origin" src="~/Login 10_files/s.js"></script>
+<script nonce="9347abd4-d459-49c8-bf1a-ea2ec3c2c0df">try { (function (w, d) { !function (j, k, l, m) { if (j.zaraz) console.error("zaraz is loaded twice"); else { j[l] = j[l] || {}; j[l].executed = []; j.zaraz = { deferred: [], listeners: [] }; j.zaraz._v = "5796"; j.zaraz.q = []; j.zaraz._f = function (n) { return async function () { var o = Array.prototype.slice.call(arguments); j.zaraz.q.push({ m: n, a: o }) } }; for (const p of ["track", "set", "debug"]) j.zaraz[p] = j.zaraz._f(p); j.zaraz.init = () => { var q = k.getElementsByTagName(m)[0], r = k.createElement(m), s = k.getElementsByTagName("title")[0]; s && (j[l].t = k.getElementsByTagName("title")[0].text); j[l].x = Math.random(); j[l].w = j.screen.width; j[l].h = j.screen.height; j[l].j = j.innerHeight; j[l].e = j.innerWidth; j[l].l = j.location.href; j[l].r = k.referrer; j[l].k = j.screen.colorDepth; j[l].n = k.characterSet; j[l].o = (new Date).getTimezoneOffset(); if (j.dataLayer) for (const w of Object.entries(Object.entries(dataLayer).reduce(((x, y) => ({ ...x[1], ...y[1] })), {}))) zaraz.set(w[0], w[1], { scope: "page" }); j[l].q = []; for (; j.zaraz.q.length;) { const z = j.zaraz.q.shift(); j[l].q.push(z) } r.defer = !0; for (const A of [localStorage, sessionStorage]) Object.keys(A || {}).filter((C => C.startsWith("_zaraz_"))).forEach((B => { try { j[l]["z_" + B.slice(7)] = JSON.parse(A.getItem(B)) } catch { j[l]["z_" + B.slice(7)] = A.getItem(B) } })); r.referrerPolicy = "origin"; r.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(j[l]))); q.parentNode.insertBefore(r, q) };["complete", "interactive"].includes(k.readyState) ? zaraz.init() : j.addEventListener("DOMContentLoaded", zaraz.init) } }(w, d, "zarazData", "script"); window.zaraz._p = async bv => new Promise((bw => { if (bv) { bv.e && bv.e.forEach((bx => { try { const by = d.querySelector("script[nonce]"), bz = by?.nonce || by?.getAttribute("nonce"), bA = d.createElement("script"); bz && (bA.nonce = bz); bA.innerHTML = bx; bA.onload = () => { d.head.removeChild(bA) }; d.head.appendChild(bA) } catch (bB) { console.error(`Error executing script: ${bx}\n`, bB) } })); Promise.allSettled((bv.f || []).map((bC => fetch(bC[0], bC[1])))) } bw() })); zaraz._p({ "e": ["(function(w,d){})(window,document)"] }); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
+<script>(function (w, d) { })(window, document)</script>
+<script>    (function (w, d) { w.zarazData.executed.push("AllTracks"); w.zarazData.executed.push("Pageview"); })(window, document)</script>
+<script>    (function (w, d) { })(window, document)</script>
+<script>    (function (w, d) { { (function (w, d) { zaraz.__zarazMCListeners = { "google-analytics_v4_20ac": ["visibilityChange"] }; })(window, document); } })(window, document)</script>
+<script>    (function (w, d) { { (function (w, d) { zaraz.__zarazMCListeners = { "google-analytics_v4_20ac": ["visibilityChange"] }; })(window, document); } })(window, document)</script>
+
+<div class="img js-fullheight" style="background-image: url('/img/bg_login.jpg'); height: 953px;">
+    <section class="ftco-section" style="height: inherit;">
+        <div class="container">
+            <!-- <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Login #10</h2>
+                </div>
+            </div> -->
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0">
+                        <h3 class="mb-4 text-center">Sign up to become an administrator</h3>
+                        <form asp-action="LogIn"  class="signin-form">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <!-- Username -->
+                            <div class="form-group">
+                                <input asp-for="UserName" type="text" class="form-control" placeholder="Username">
+                                @Html.ValidationMessageFor(m => m.UserName)
+                            </div>
+                            <!-- password -->
+                            <div class="form-group">
+                                <input asp-for="Password" id="password-field" type="password" class="form-control" placeholder="Password">
+                                <span toggle="#password-field"
+                                      class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </div>
+                            <!-- repassword -->
+                            <div class="form-group">
+                                <input asp-for="Confirm_Password" id="repassword-field" type="password" class="form-control" placeholder="ReEnterPassword">
+                                <span toggle="#repassword-field"
+                                      class="fa fa-fw field-icon toggle-password fa-eye"></span>
+                                @Html.ValidationMessageFor(m => m.Confirm_Password)
+                            </div>
+                            <!-- Submit -->
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Đăng Nhập</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="~/Login 10_files/jquery.min.js"></script>
+<script src="~/Login 10_files/popper.js"></script>
+<script src="~/Login 10_files/bootstrap.min.js"></script>
+<script src="~/Login 10_files/main.js"></script>
+<script defer="" src="~/Login 10_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon="{&quot;rayId&quot;:&quot;8bee8b339d750998&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;}"
+        crossorigin="anonymous"></script>

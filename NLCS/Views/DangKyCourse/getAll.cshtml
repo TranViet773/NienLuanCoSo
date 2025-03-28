@@ -1,0 +1,96 @@
+﻿@model IEnumerable<NLCS.ViewModels.CourseDangKyVM>
+
+@using Microsoft.AspNetCore.Mvc
+
+@{
+    ViewData["Title"] = "getAll";
+    Layout = "~/Views/Shared/_layoutCommon.cshtml";
+    var activeTab = ViewBag.ActiveTab != null ? Convert.ToInt32(ViewBag.ActiveTab) : 0;
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp animated slideInDown" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Khóa học của bạn</h6>
+            <h1 class="mb-5">Danh sách khóa học</h1>
+        </div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link @(activeTab == 0 ? "active" : "")" id="home-tab" role="tab" aria-controls="home" aria-selected="@(activeTab == 0).ToString().ToLower()"
+                   onclick="navigateToTab('0')">Tất cả</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(activeTab == 1 ? "active" : "")" id="registered-tab" role="tab" aria-controls="registered" aria-selected="@(activeTab == 1).ToString().ToLower()"
+                   onclick="navigateToTab('1')">Đã Đăng Ký</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(activeTab == 2 ? "active" : "")" id="learning-tab" role="tab" aria-controls="learning" aria-selected="@(activeTab == 2).ToString().ToLower()"
+                   onclick="navigateToTab('2')">Đang Học</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(activeTab == 3 ? "active" : "")" id="completed-tab" role="tab" aria-controls="completed" aria-selected="@(activeTab == 3).ToString().ToLower()"
+                   onclick="navigateToTab('3')">Đã Hoàn Thành</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(activeTab == 4 ? "active" : "")" id="completed-tab" role="tab" aria-controls="completed" aria-selected="@(activeTab == 3).ToString().ToLower()"
+                   onclick="navigateToTab('4')">Nhận chứng chỉ</a>
+            </li>
+        </ul>
+        <!-- Table CTDT Start -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Mã Khóa học</td>
+                    <td>Tên Khóa học</td>
+                    <td>Ngày Đăng ký</td>
+                    <td>Ngày Hoàn thành</td>
+                    <td>Năm Học</td>
+                    <td>Học kỳ</td>
+                    <td>Xem chi tiết</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var temp = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    temp++;
+                    <tr>
+                        <td>@temp</td>
+                        <td>@item.Subject_Id</td>
+                        <td>@item.Subject_Name</td>
+                        <td>@item.DateOfRegistration</td>
+                        <td>@item.DateOfCompletion</td>
+                        <td>@item.Year</td>
+                        <td>@item.Semester</td>
+                        <td style="width: 225px;">
+                            
+                            @if(item.Status_Dangky == 4)
+                            {
+                                <a href="@Url.Action("DownloadCertificate", "DangKyCourse", new { studentId = item.Student_Id, courseId = item.Subject_Id })" class="btn btn-success">Tải Chứng Chỉ</a>
+                            }
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (!Model.Any())
+        {
+            <tr>
+                <h6 class="text-center" style="margin-top: 10px;">Không có khóa học</h6>
+            </tr>
+        }
+        <!-- Table CTDT End -->
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+    function navigateToTab(id_trangthai) {
+        var url = '@Url.Action("getAll", "DangKyCourse")' + '?id_trangthai=' + id_trangthai;
+        window.location.href = url;
+    }
+</script>

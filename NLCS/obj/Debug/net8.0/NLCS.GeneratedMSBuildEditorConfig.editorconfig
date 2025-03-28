@@ -1,0 +1,299 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = NLCS
+build_property.RootNamespace = NLCS
+build_property.ProjectDir = D:\VIET\Y4 - HKI\Nien Luan Co So\NLCS\NLCS\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = D:\VIET\Y4 - HKI\Nien Luan Co So\NLCS\NLCS
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Faculty/AddFaculty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmFjdWx0eVxBZGRGYWN1bHR5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Faculty/DeleteFaculty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmFjdWx0eVxEZWxldGVGYWN1bHR5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Faculty/DetailFaculty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmFjdWx0eVxEZXRhaWxGYWN1bHR5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Faculty/EditFaculty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmFjdWx0eVxFZGl0RmFjdWx0eS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Faculty/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRmFjdWx0eVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Manager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Manager/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlclxMb2dJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Manager/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTWFuYWdlclxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Teacher/AddTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlclxBZGRUZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Teacher/DeleteTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlclxEZWxldGVUZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Teacher/DetailTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlclxEZXRhaWxUZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Teacher/EditTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlclxFZGl0VGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Teacher/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Teacher/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlclxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Teacher/SearchByNameOrId.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVGVhY2hlclxTZWFyY2hCeU5hbWVPcklkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/DangKy/getAllRegistration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xEYW5nS3lcZ2V0QWxsUmVnaXN0cmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Home/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xIb21lXEVkaXRQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Home/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xIb21lXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Shared/_footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTaGFyZWRcX2Zvb3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Shared/_LayoutDean.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTaGFyZWRcX0xheW91dERlYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTaGFyZWRcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Subject/AddCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTdWJqZWN0XEFkZENvdXJzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Subject/DeleteCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTdWJqZWN0XERlbGV0ZUNvdXJzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Subject/DetailCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTdWJqZWN0XERldGFpbENvdXJzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Subject/DetailTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTdWJqZWN0XERldGFpbFRlYWNoZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Subject/EditCourse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTdWJqZWN0XEVkaXRDb3Vyc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Subject/getAllCourses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTdWJqZWN0XGdldEFsbENvdXJzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Subject/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTdWJqZWN0XFNlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/TrainingProgram/AddTP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xUcmFpbmluZ1Byb2dyYW1cQWRkVFAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/TrainingProgram/DeleteTrainingProgram.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xUcmFpbmluZ1Byb2dyYW1cRGVsZXRlVHJhaW5pbmdQcm9ncmFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/TrainingProgram/DetailTrainingProgram.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xUcmFpbmluZ1Byb2dyYW1cRGV0YWlsVHJhaW5pbmdQcm9ncmFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/TrainingProgram/EditTrainingProgram.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xUcmFpbmluZ1Byb2dyYW1cRWRpdFRyYWluaW5nUHJvZ3JhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/TrainingProgram/getAllTP.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xUcmFpbmluZ1Byb2dyYW1cZ2V0QWxsVFAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Account/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Account/LogInUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJblVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Account/_getImageOfUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfZ2V0SW1hZ2VPZlVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Course/getCourseById.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXGdldENvdXJzZUJ5SWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Course/GetCourseByTrainingProgram.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEdldENvdXJzZUJ5VHJhaW5pbmdQcm9ncmFtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/DangKyCourse/getAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuZ0t5Q291cnNlXGdldEFsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Home/DetailTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxUZWFjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Home/getFaculty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxnZXRGYWN1bHR5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Home/search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Home/Test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/Components/Course/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ291cnNlXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/Components/Faculty/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRmFjdWx0eVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/Components/Teacher/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVGVhY2hlclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/_footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9mb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/_layoutCommon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9sYXlvdXRDb21tb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/User/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/User/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0VXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/User/RegisterUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3RlclVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-228roa06kf
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Areas/Dean/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGVhblxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-b3lzztv7nj
+
+[D:/VIET/Y4 - HKI/Nien Luan Co So/NLCS/NLCS/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-3woroapkgp

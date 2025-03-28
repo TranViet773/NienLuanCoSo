@@ -1,0 +1,83 @@
+﻿@model NLCS.Areas.Dean.ViewModels.DetailCourseVM
+
+@{
+    ViewData["Title"] = "DetailCourse";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+}
+
+<h1 class="text-center set-color">@Model.Subject_Name</h1>
+<style>
+    .imgcover_faculty {
+        object-fit: cover;
+        height: 400px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .set-color {
+        color: #06BBCC !important;
+    }
+</style>
+<div>
+    <hr />
+    <dl class="row">
+        <img src="@Url.Content(Model.Url_Image)" class="imgcover_faculty" />
+        <dd class="col-sm-12">
+            @Html.DisplayFor(model => model.Subject_Description)
+        </dd>
+        <dt class="col-sm-2 set-color">
+            Mã Khóa học
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject_Id)
+        </dd>
+        <dt class="col-sm-2 set-color">
+            Tên khóa học
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subject_Name)
+        </dd>
+        <dt class="col-sm-2 set-color">
+            Thời gian đào tạo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject_Time) Ngày
+        </dd>
+        <dt class="col-sm-2 set-color">
+           Số lượng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject_Quantity)
+        </dd>
+        <dt class="col-sm-2 set-color">
+            Địa điểm tổ chức
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject_Place)
+        </dd>
+        <dt class="col-sm-2 set-color">
+            Đối tượng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject_DoiTuong)
+        </dd>
+        <dt class="col-sm-2 set-color">
+            Nội dung chi tiết
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Subject_Content)
+        </dd>
+        
+    </dl>
+    <h3>Danh Sách Giảng Viên Dạy Khóa Học</h3>
+    <ul>
+        @foreach (var teacherId in Model.Teachers)
+        {
+            <li><a href="@Url.Action("DetailTeacher",new {id = teacherId.Teacher_Id})">@teacherId.Teacher_Name</a></li>
+        }
+    </ul>
+</div>
+<div>
+    @Html.ActionLink("Edit", "EditCourse", new { id = Model.Subject_Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>

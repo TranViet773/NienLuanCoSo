@@ -1,0 +1,92 @@
+﻿@model NLCS.Areas.Dean.ViewModels.TrainingProgramVM
+
+@{
+    ViewData["Title"] = "AddTP";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+}
+<style>
+    .set-color {
+        color: #06BBCC !important;
+    }
+    .btn-custome{
+        color: #fff;
+        background-color: #06BBCC;
+    }
+    .btn-custome:hover{
+            color: #06BBCC;
+        background-color: #fff;
+            border: 1px solid #06BBCC;
+    }
+</style>
+<hr />
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="border p-4 bd-radius-5px" asp-action="AddTP">
+                <div>
+                    <h2 class="text-center set-color">Thêm chương trình đào tạo</h2>
+                </div>
+
+                <div class="mb-3">
+                    <label for="TP_Id" class="form-label set-color">Mã Chương Trình</label>
+                    <input type="text" class="form-control bd-radius-5px" id="TP_Id" asp-for="TP_Id" />
+                    <span asp-validation-for="TP_Id" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="TP_Name" class="form-label set-color">Tên Chương Trình</label>
+                    <input type="text" class="form-control bd-radius-5px" id="TP_Name" asp-for="TP_Name" />
+                    <span asp-validation-for="TP_Name" class="text-danger"></span>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="form-group col-md-6">
+                        <label for="TP_TrainingForm" class="form-label set-color">Hình Thức Đào Tạo</label>
+                        <select asp-for="TP_TrainingForm" class="form-control" asp-items="Model.HinhThucDaoTaos"></select>
+                        <span asp-validation-for="TP_TrainingForm" class="text-danger"></span>
+                    </div>
+                     <div class="form-group col-md-6">
+                         <label for="TP_Leader" class="form-label set-color">Phụ trách</label>
+                         <input type="text" class="form-control bd-radius-5px" id="TP_Leader" asp-for="TP_Leader" />
+                         <span asp-validation-for="TP_Leader" class="text-danger"></span>
+                     </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="form-group col-md-6">
+                        <label for="TP_Student" class="form-label set-color">Đối tượng đào tạo</label>
+                        <select asp-for="TP_Student" class="form-control" asp-items="Model.DoiTuongDaoTaos"></select>
+                        <span asp-validation-for="TP_Student" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="TP_Target" class="form-label set-color">Mục tiêu đào tạo</label>
+                        <input type="text" class="form-control bd-radius-5px" id="TP_Target" asp-for="TP_Target" />
+                        <span asp-validation-for="TP_Target" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="TP_Title" class="form-label set-color">Tiêu Đề</label>
+                    <input type="text" class="form-control bd-radius-5px" id="TP_Title" asp-for="TP_Title" />
+                    <span asp-validation-for="TP_Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="TP_Desciption" class="form-label set-color">Mô Tả</label>
+                    <input type="text" class="form-control bd-radius-5px" id="TP_Desciption" asp-for="TP_Desciption" />
+                    <span asp-validation-for="TP_Desciption" class="text-danger"></span>
+                </div>
+
+                <h5 class="text-danger">@ViewBag.InValidTP</h5>
+                <h5 class="text-danger">@ViewBag.ExistedTP</h5>
+
+                <button type="submit" class="btn btn-custome m-2" style="margin:auto; display:block;">Tạo</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

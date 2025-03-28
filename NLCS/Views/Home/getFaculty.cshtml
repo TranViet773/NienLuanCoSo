@@ -1,0 +1,134 @@
+﻿@model NLCS.Models.Entities.Faculty
+
+@{
+    ViewData["Title"] = "getFaculty";
+    Layout = "~/Views/Shared/_layoutCommon.cshtml";
+}
+<style>
+    .page-header {
+        background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(@Model.Faculty_Image);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .py-5 {
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    td, th {
+        vertical-align: middle;
+    }
+</style>
+<div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3 text-white animated slideInDown">@Model.Faculty_Name</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Khoa</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">@Model.Faculty_Name</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div>
+    <h5 style="margin-left: 6%; margin-right: 6%; text-align: justify;" class="animated slideInDown">
+        @Model.Faculty_Description
+    </h5>
+</div>
+<!-- Training Program Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp animated slideInDown" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Chương trình đào tạo</h6>
+            <h1 class="mb-5">Danh sách chương trình đào tạo</h1>
+        </div>
+        <!-- Table CTDT Start -->
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Mã CTDT</td>
+                    <td>Tên CTDT</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var temp = 0;
+                }
+                @foreach (var tp in Model.TrainingPrograms)
+                {
+                    { temp++; }
+                    <tr>
+                        <td>@temp</td>
+                        <td>@tp.TP_Id</td>
+                        <td>@tp.TP_Name</td>
+                        <td style="width: 225px;">
+                            <a href="@Url.Action("GetCourseByTrainingProgram","Course", new {id_trainingprogram = tp.TP_Id, name_tp=tp.TP_Name})" class="btn btn-primary py-3 px-5 mt-2" href="">Xem Khóa Học</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!-- Table CTDT End -->
+
+
+    </div>
+</div>
+<!-- Training Program End -->
+<!-- Teacher Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp animated slideInDown" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Giảng Viên</h6>
+            <h1 class="mb-5">Danh sách giảng viên</h1>
+        </div>
+
+        @{
+            var adminItem = Model.Teachers.FirstOrDefault(t => t.IsAdmin);
+            var otherItems = Model.Teachers;
+            int i = 0; // Khởi tạo biến đếm
+        }
+        <div class="row g-4">
+            @foreach (var item in otherItems)
+            {
+                <div class="col-lg-3 col-md-6 wow fadeInUp animated slideInDown" data-wow-delay="0.7s" style="width: 20%;">
+                    <a href="@Url.Action("DetailTeacher","Home", new {id = item.Teacher_Id})">
+                        <div class="team-item bg-light">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src="@Url.Content(item.Teacher_Image)" alt="" style="width: 100%;">
+                            </div>
+                            <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                    <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4">
+                                <h5 class="mb-0">@item.Teacher_Name</h5>
+                                <small>@item.Teacher_Degree</small>
+                                @if (item.IsAdmin)
+                                {
+                                    <p class="text-danger">Trưởng Khoa</p>
+                                }
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Teacher End -->

@@ -1,0 +1,188 @@
+﻿@model IEnumerable<NLCS.Areas.Dean.ViewModels.DangKyVM>
+@using Microsoft.AspNetCore.Mvc
+@{
+    ViewData["Title"] = "getAllRegistration";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+    var activeTab = ViewBag.ActiveTab != null ? Convert.ToInt32(ViewBag.ActiveTab) : 0;
+}
+<style>
+    #year:hover{
+        cursor: pointer;
+    }
+
+    #semester:hover {
+        cursor: pointer;
+    }
+    .nav-link:hover{
+        cursor: pointer;
+    }
+</style>
+<div class="text-center wow fadeInUp animated slideInDown" data-wow-delay="0.1s">
+    <h6 class="section-title text-center text-primary px-3">Khóa học của bạn</h6>
+    <h1 class="mb-5">Danh sách khóa học</h1>
+</div>
+<div class="flex-sm-row">
+    <select name="year" id="yearDropdown" data-selected="@ViewBag.SelectedYear" onchange="toggleSemesterDropdown()">
+        <option value="">Năm Học</option>
+        <option value="20232024">2023-2024</option>
+        <option value="20242025">2024-2025</option>
+    </select>
+
+    <select name="semester" id="semesterDropdown" data-selected="@ViewBag.SelectedSemester">
+        <option value="">Học kỳ</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+</div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link @(activeTab == 0 ? "active" : "")" id="home-tab" role="tab" aria-controls="home" aria-selected="@(activeTab == 0).ToString().ToLower()"
+           onclick="navigateToTab('')">Tất cả</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @(activeTab == 1 ? "active" : "")" id="registered-tab" role="tab" aria-controls="registered" aria-selected="@(activeTab == 1).ToString().ToLower()"
+           onclick="navigateToTab('1')">Chờ duyệt</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @(activeTab == 2 ? "active" : "")" id="learning-tab" role="tab" aria-controls="learning" aria-selected="@(activeTab == 2).ToString().ToLower()"
+           onclick="navigateToTab('2')">Xác nhận hoàn thành</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @(activeTab == 3 ? "active" : "")" id="completed-tab" role="tab" aria-controls="completed" aria-selected="@(activeTab == 3).ToString().ToLower()"
+           onclick="navigateToTab('3')">Cấp bằng</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @(activeTab == 4 ? "active" : "")" id="completed-tab" role="tab" aria-controls="completed" aria-selected="@(activeTab == 4).ToString().ToLower()"
+           onclick="navigateToTab('4')">Hoàn thành</a>
+    </li>
+</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã môn học
+            </th>
+            <th>
+                Tên khóa học
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Tên tài khoản
+            </th>
+            <th>
+                Năm học
+            </th>
+            <th>
+               Học kỳ
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester)
+            </td>
+                <td>
+                    @if (item.DangKy_Status == 1)
+                    {
+                        <a href="@Url.Action("ComfirmRegistation", "DangKy", new { id_subject = item.Subject_Id, id_student = item.Student_Id, id_status = item.DangKy_Status, semester = item.Semester, year = item.Year })" class="btn btn-danger m-2">Duyệt</a>
+                        <a href="@Url.Action("DeleteRegistation", "DangKy", new { id_subject = item.Subject_Id, id_student = item.Student_Id, id_status = item.DangKy_Status, semester = item.Semester, year = item.Year })" class="btn btn-warning m-2">Xóa</a>
+
+                    }
+                    else if (item.DangKy_Status == 2)
+                    {
+                        <a href="@Url.Action("ComfirmRegistation", "DangKy", new { id_subject = item.Subject_Id, id_student = item.Student_Id, id_status = item.DangKy_Status, semester = item.Semester, year = item.Year })" class="btn btn-success m-2">Xác nhận hoàn thành</a>
+                        <a href="@Url.Action("DeleteRegistation", "DangKy", new { id_subject = item.Subject_Id, id_student = item.Student_Id, id_status = item.DangKy_Status, semester = item.Semester, year = item.Year })" class="btn btn-warning m-2">Xóa</a>
+
+                    }
+                    else if (item.DangKy_Status == 3)
+                    {
+                        <a href="@Url.Action("DeleteRegistation", "DangKy", new { id_subject = item.Subject_Id, id_student = item.Student_Id, id_status = item.DangKy_Status, semester = item.Semester, year = item.Year })" class="btn btn-warning m-2">Xóa</a>
+                        <a href="@Url.Action("GenerateCertificate", "DangKy", new { courseId = item.Subject_Id, studentId = item.Student_Id, id_status = item.DangKy_Status})" class="btn btn-warning m-2">Tạo chứng chỉ</a>
+                    }
+                    else if (item.DangKy_Status == 4)
+                    {
+                        <a href="@Url.Action("DeleteRegistation", "DangKy", new { id_subject = item.Subject_Id, id_student = item.Student_Id, id_status = item.DangKy_Status, semester = item.Semester, year = item.Year })" class="btn btn-warning m-2">Xóa</a>
+                    }
+                </td>
+        </tr>
+    }
+  </tbody>
+</table>
+@if (TempData["TaoBangThanhCong"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["TaoBangThanhCong"]
+    </div>
+}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+    function setSelectedOptions() {
+        // Thiết lập selected cho năm học
+        var yearDropdown = document.getElementById("yearDropdown");
+        var selectedYear = yearDropdown.getAttribute("data-selected");
+        if (selectedYear) {
+            yearDropdown.value = selectedYear;
+        }
+
+        // Thiết lập selected cho học kỳ
+        var semesterDropdown = document.getElementById("semesterDropdown");
+        var selectedSemester = semesterDropdown.getAttribute("data-selected");
+        if (selectedSemester) {
+            semesterDropdown.value = selectedSemester;
+        }
+
+        // Gọi toggle để khoá học kỳ nếu chưa chọn năm học
+        toggleSemesterDropdown();
+    }
+
+    function toggleSemesterDropdown() {
+        var yearDropdown = document.getElementById("yearDropdown");
+        var semesterDropdown = document.getElementById("semesterDropdown");
+
+        // Nếu "Năm học" không được chọn, khóa dropdown "Học kỳ" và đặt giá trị về null
+        if (yearDropdown.value === "") {
+            semesterDropdown.disabled = true;
+            semesterDropdown.value = ""; // Gán giá trị học kỳ là null khi khóa dropdown
+        } else {
+            semesterDropdown.disabled = false;
+        }
+    }
+
+    // Gọi hàm này khi trang tải để duy trì trạng thái
+    document.addEventListener("DOMContentLoaded", setSelectedOptions);
+    function navigateToTab(id_trangthai) {
+        // Lấy giá trị của năm học và học kỳ từ các dropdown
+        var year = document.querySelector('select[name="year"]').value;
+        var semester = document.querySelector('select[name="semester"]').value;
+
+        // Tạo URL với các tham số id_trangthai, year và semester
+        var url = '@Url.Action("getAllRegistration", "DangKy")' +
+            '?id_trangthai=' + id_trangthai +
+            '&year=' + year +
+            '&semester=' + semester;
+
+        // Điều hướng đến URL mới
+        window.location.href = url;
+    }
+</script>

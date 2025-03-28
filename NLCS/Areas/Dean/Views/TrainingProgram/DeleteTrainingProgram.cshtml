@@ -1,0 +1,81 @@
+﻿@model NLCS.Areas.Dean.ViewModels.TrainingProgramVM
+
+@{
+    ViewData["Title"] = "DeleteTrainingProgram";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+}
+
+<h1>DeleteTrainingProgram</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TrainingProgramVM</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_Name)
+        </dd>
+         @* <dt class = "col-sm-2">
+             @Html.DisplayNameFor(model => model.TP_TrainingTime)
+         </dt>
+         <dd class = "col-sm-10">
+             @Html.DisplayFor(model => model.TP_TrainingTime)
+         </dd> *@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_Student)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_Student)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_Leader)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_Leader)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_TrainingForm)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_TrainingForm)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_Target)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_Target)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_Desciption)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_Desciption)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TP_FacultyId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TP_FacultyId)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteTrainingProgram">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

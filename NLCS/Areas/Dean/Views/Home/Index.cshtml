@@ -1,0 +1,130 @@
+﻿@using Newtonsoft.Json;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Dean/Views/Shared/_LayoutDean.cshtml";
+    var courseRegistrations = ViewBag.CourseRegistrations;
+}
+<style>
+    .bg-gradient-danger {
+        background: linear-gradient(to right, #FE7496, #FFBB96);
+    }
+
+    .bg-gradient-success {
+        background: linear-gradient(to right, #09CDAF, #81D9D1);
+    }
+
+    .bg-gradient-primary {
+        background: linear-gradient(to right, #9C56FF, #D688FF);
+    }
+
+    .profile-icon {
+        color: lightgrey;
+    }
+
+    canvas {
+        width: 80% !important;
+        height: 80% !important;
+    }
+
+    .charts-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .chart-wrapper {
+        width: 48%;
+    }
+</style>
+<h1 class="text-center" style="color: #009CFF;">Chào mừng bạn đến với Chế độ Quản lý của Trưởng Khoa</h1>
+<hr />
+<div class="row text-center">
+    <div class="col-sm-4 grid-margin">
+        <div class="card bg-gradient-danger text-white">
+            <div class="card-body">
+                <div class="profile-icon fs-3">
+                    <i class="fa-solid fa-school-circle-check"></i>
+                </div>
+                <h2 class="mb-0 mt-3" id="facultyCounter">@ViewBag.QuantityOfTP</h2>
+                <h5 class="font-weight-normal mb-3">Chương trình đào tạo</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 grid-margin">
+        <div class="card bg-gradient-success text-white">
+            <div class="card-body">
+                <div class="profile-icon fs-3">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <h2 class="mb-0 mt-3" id="teacherCounter">@ViewBag.QuantityOfCourse</h2>
+                <h5 class="font-weight-normal mb-3">Khóa học</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 grid-margin">
+        <div class="card bg-gradient-primary text-white">
+            <div class="card-body">
+                <div class="profile-icon fs-3">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <h2 class="mb-0 mt-3" id="studentCounter">@ViewBag.QuantityOdRegister</h2>
+                <h5 class="font-weight-normal mb-3">Số lượt đăng ký</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12 col-xl-6">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Biểu đồ thể hiện lượt đăng ký của các môn học</h6>
+        <canvas id="registrationChart" width="800" height="400"></canvas>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const decodedCourseNames = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.CourseNames));
+    const registrationCounts = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.RegistrationCount));
+
+    // Cấu hình biểu đồ
+    const ctx = document.getElementById('registrationChart').getContext('2d');
+    const registrationChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: decodedCourseNames, // Danh sách tên khóa học đã giải mã
+            datasets: [{
+                label: 'Số lượt đăng ký',
+                data: registrationCounts,
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function (tooltipItems) {
+                            const index = tooltipItems[0].dataIndex;
+                            return decodedCourseNames[index];
+                        },
+                        label: function (tooltipItem) {
+                            return 'Số lượt đăng ký: ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    display: false // Ẩn tên dưới trục x để chỉ hiển thị trong popup
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+
+
+

@@ -1,0 +1,225 @@
+﻿@model NLCS.ViewModels.LogInUserVM
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/_layoutCommon.cshtml";
+}
+<style>
+    .form-control {
+        height: auto !important;
+    }
+
+    .input-margin {
+        margin-top: 12px;
+    }
+
+    .custom-input {
+        border-radius: 5px;
+        /* Bo góc 5px */
+        text-align: center;
+        /* Căn giữa nội dung */
+        height: 40px;
+        /* Đảm bảo chiều cao */
+        width: 100%;
+        /* Đảm bảo input chiếm hết chiều rộng của cột */
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+        /* Tạo hiệu ứng chuyển màu viền khi hover */
+        color: black !important;
+    }
+
+        .custom-input:focus {
+            border-color: #007bff;
+            /* Đổi màu viền khi input được focus */
+            outline: none;
+            /* Bỏ đường viền mặc định khi focus */
+            box-shadow: 0px 0px 8px 1px rgba(39, 128, 230, 1);
+        }
+
+        .custom-input:hover {
+            border-color: #0056b3;
+            /* Đổi màu viền khi hover */
+        }
+    .bd-radius-5px {
+        border-radius: 5px !important;
+    }
+</style>
+<div class="container" >
+    <div class="row justify-content-center" >
+        <div class="col-md-6 col-lg-5">
+            <!-- Thay đổi kích thước cột -->
+            <form class="border p-4 bd-radius-5px signin-form" id="registerForm" style="margin-top: 13%; margin-bottom: 4%;">
+                <div>
+                    <h2 class="text-center">Đăng nhập</h2>
+                </div>
+                <div class="mb-3">
+                    <label for="studentEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control bd-radius-5px" id="studentEmail" asp-for="Email">
+                    <div class="form-text">Chúng tôi sẽ không bao giờ chia sẻ email của bạn với bất kỳ ai khác.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="studentPhoneNumber" class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control bd-radius-5px" id="studentPhoneNumber" asp-for="UserName">
+                </div>
+                <div class="mb-3">
+                    <label for="studentAddress" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control bd-radius-5px" id="studentAddress" asp-for="Password">
+                </div>
+                <div class="row" style="margin-left: 0.4em;">
+                    <div class="form-check col" style="">
+                        <input type="radio" class="form-check-input" id="checkMeOut1" asp-for="Role" value="1" checked>
+                        <label class="form-check-label" for="checkMeOut1">Học viên</label>
+                    </div>
+                    <div class="form-check col" style="">
+                        <input type="radio" class="form-check-input" id="checkMeOut2" asp-for="Role" value="2">
+                        <label class="form-check-label" for="checkMeOut2">Giáo viên</label>
+                    </div>
+                    <div class="form-check col" style="">
+                        <input type="radio" class="form-check-input" id="checkMeOut3" asp-for="Role" value="3">
+                        <label class="form-check-label" for="checkMeOut3">Quản trị viên</label>
+                    </div>
+                </div>
+                <div style="padding: 2px 15px 0px 10px; font-weight:400;">
+                    <p>Đăng ký ngay <a href="@Url.Action("RegisterUser","User")">Tại đây!</a></p>
+                </div>
+                <button type="submit" class="btn btn-primary" data-toggle="modal" style="margin-left: 14rem; margin-top: 1rem;border-radius: 5px;">
+                    Xác nhận
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Verify Modal Register -->
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Nhập mã xác thực</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="verifyCodeForm" asp-action="VerifyCode">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code1">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code2">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code3">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code4">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code5">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control custom-input" name="code6">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;" data-dismiss="modal">Xác nhận</button>
+                </form>
+                <div id="verifyCodeMessage" class="text-danger"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('.custom-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', function () {
+                // Chỉ cho phép nhập số từ 0 đến 9
+                this.value = this.value.replace(/[^0-9]/g, '');
+
+                // Tự động chuyển đến ô input kế tiếp nếu đã nhập 1 số
+                if (this.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            // Optional: Move focus backward if backspace is pressed and the field is empty
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    });
+</script>
+@section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Lấy giá trị ReturnUrl từ ViewBag
+            var returnUrl = '@Html.Raw(ViewBag.ReturnUrl)';
+
+            // Xử lý khi gửi form đăng ký
+            $('#registerForm').submit(function (event) {
+                event.preventDefault(); // Ngăn chặn gửi form mặc định
+                const formData = $(this).serialize();
+                console.log(formData); // Log data to see if all fields are included
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("LogInUser")',
+                    data: formData + '&ReturnUrl=' + encodeURIComponent(returnUrl), // Thêm ReturnUrl vào dữ liệu
+                    success: function (response) {
+                        if (response.success) {
+                            // Hiển thị modal nhập mã xác nhận
+                            $('#exampleModal').modal('show');
+                        }
+                        else {
+                            if (response.mess != null)
+                                alert(response.mess);
+                            else
+                                alert("Sai thông tin đăng nhập");
+                        }
+                    }
+                });
+            });
+
+            // Xử lý khi gửi form xác thực
+            $('#verifyCodeForm').submit(function (event) {
+                event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+                // Thu thập dữ liệu từ các trường nhập mã
+                let verifyCode = {
+                    code1: $('#exampleModal input[name="code1"]').val(),
+                    code2: $('#exampleModal input[name="code2"]').val(),
+                    code3: $('#exampleModal input[name="code3"]').val(),
+                    code4: $('#exampleModal input[name="code4"]').val(),
+                    code5: $('#exampleModal input[name="code5"]').val(),
+                    code6: $('#exampleModal input[name="code6"]').val(),
+                    returnUrl: returnUrl // Thêm returnUrl vào dữ liệu
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("VerifyCode")',
+                    data: verifyCode,
+                    success: function (response) {
+                        if (response.success) {
+                            // Chuyển hướng đến trang chính sau khi thành công
+                            if (response.role == "1") { // Student
+                                window.location.href = response.url;
+                            } else if (response.role == "2") { // Dean
+                                window.location.href = '@Url.Action("Index", "Home", new { area = "Dean" })';
+                            } else if (response.role == "3") { // Admin
+                               window.location.href = '@Url.Action("Index", "Home", new{ area = "Admin"})';
+                                console.log(response.url);
+                            }
+                        } else {
+                            // Hiển thị thông báo lỗi nếu có
+                            $('#verifyCodeMessage').text(response.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
